@@ -55,7 +55,7 @@ T(n) = 2^(n-1) * cte1 + (2^(n-1) - 1)cte2
 
 Cálculo de O(n)
 
-Asumimos que T(n) es O(n^2) y lo demostramos:
+Asumimos que T(n) es O(2^n) y lo demostramos:
 
 T(n) = 2^(n-1) * cte1 + (2^(n-1) - 1)cte2 = T(n) = 2^(n-1) * cte1 + 2^(n-1) * cte2 - cte2
 
