@@ -1,0 +1,84 @@
+Calcular el T(n) y el big-Oh de :
+
+static public int rec2(int n){
+  if (n <= 1)
+    return 1;
+  else
+    return (2 * rec2(n-1));
+}
+
+//////////////////////////////////////////////////
+
+Resolución:
+
+Función de recurrencia:
+
+T(n) = cte1 si n <= 1, 2*T(n-1) + cte2 si n > 1
+
+Hallar el patrón de recurrencia, para n > 1:
+
+T(n) = 2*T(n-1) + cte2 (i = 1)
+
+T(n-1) = 2*T(n-2) + cte2 (i = 2)
+
+Reemplazo:
+
+T(n) = 2*(2*T(n-2) + cte2) + cte2
+
+Otro paso:
+
+T(n-2) = 2*T(n-3) + cte2 (i = 3)
+
+Reemplazo:
+
+T(n) = 2*(2*(2*T(n-3) + cte2) + cte2) + cte2 = 2^3 * T(n-3) + cte2 * 2^2 + cte2 * 2^1 + cte2 * 2^0 (i = 3)
+
+El patron resultante es:
+
+T(n) = 2^x * T(n-x) + sumatoria de cte2 * 2^j, desde j = 0 hasta x-1
+
+El caso base se llega después de un número determinado de recurrencias. T(n-x) se convierte en T(1):
+
+T(n-x) = T(1)
+
+n - x = 1
+
+x = n - 1
+
+Entonces, reemplazo en el patrón resultante:
+
+T(n) = 2^(n-1) * T(1) + sumatoria de cte2 * 2^j, desde j = 0 hasta n-2
+
+T(n) = 2^(n-1) * cte1 + (2^(n-1) - 1)cte2
+
+////////////////////
+
+Cálculo de O(n)
+
+Asumimos que T(n) es O(n^2) y lo demostramos:
+
+T(n) = 2^(n-1) * cte1 + (2^(n-1) - 1)cte2 = T(n) = 2^(n-1) * cte1 + 2^(n-1) * cte2 - cte2
+
+T(n) es O(n) si existen constantes c y n0 tal que T(n) <= c * O(n) para todo n >= n0
+
+En este caso, T(n) <= c * 2^n para todo n >= n0
+
+Se puede hacer la demostración término a término:
+
+2^(n-1) * cte1 <= cte1 * 2^n para todo n >= 1
+
+2^(n-1) * cte2 <= cte2 * 2^n para todo n >= 1
+
+cte2 <= cte2 * 2^n para todo n >= 1
+
+Sumamos miembro a miembro las desigualdades:
+
+2^(n-1) * cte1 + 2^(n-1) * cte2 - cte2 <= cte1 + 2 * cte2 para todo n >= 1
+
+Entonces, se hallaron c = 2 * cte1 + cte2 y n0 = 1 tales que se se cumple lo pedido
+
+Entonces, T(n) es O(n^2)
+
+
+
+ 
