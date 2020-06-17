@@ -1,0 +1,19 @@
+Determinar si es verdadera o falsa la siguiente sentencia: T(n) = 2^(2n) es de O(2^n)
+
+Definición: decimos que T(n) es O(n), o sea T(n) tiene orden de magnitud f(n) si existen constantes c > 0 y n0 tales que T(n) <=  c * f(n) para todo n >= n0
+
+En este caso, buscamos c y n tal que 2^(2n) <= c * 2^n para todo n0 > 0
+
+Tomamos logaritmo en base 2 de cada lado de la desigualdad:
+
+log(2^(2n)) <= log(c * 2^n)
+
+2n <= log(c) + n
+
+Resto n en cada miembro:
+
+n <= log (c) para todo n >= n0
+
+La desigualdad obviamente es falsa, porque n puede crecer sin limites y c está fijo
+
+Entonces no se cumple la desigualdad, por lo tanto la sentencia es falsa, 2^(2n) NO es O(2^n)
